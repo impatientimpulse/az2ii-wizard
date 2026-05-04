@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  wizard.xml  –  AZ2 ImpatientImpulse Edition
+  ─────────────────────────────────────────────────────────────────────
+  This file is hosted at your GitHub Pages URL and is what Open Wizard
+  reads when a user enters your wizard source address.
+
+  IMPORTANT: After hosting on GitHub, replace every instance of
+  impatientimpulse with your actual GitHub username.
+  ─────────────────────────────────────────────────────────────────────
+-->
+<wizard>
+
+  <!-- ═══════════════════════════════════════
+       WIZARD IDENTITY
+  ═══════════════════════════════════════ -->
+  <name>AZ2 ImpatientImpulse Edition</name>
+  <version>1.0.0</version>
+  <author>impatientimpulse</author>
+  <description>Netflix-style Kodi build. Dark theme, Trakt rows, TMDb metadata, April 2026 trending content. Based on Arctic Zephyr 2 Resurrection.</description>
+
+  <!-- Wizard icon and fanart (hosted in same repo) -->
+  <icon>https://impatientimpulse.github.io/az2ii-wizard/icon.png</icon>
+  <fanart>https://impatientimpulse.github.io/az2ii-wizard/fanart.jpg</fanart>
+
+  <!-- Contact / update check URL -->
+  <forum>https://github.com/impatientimpulse/az2ii-wizard</forum>
+
+  <!-- ═══════════════════════════════════════
+       KODI COMPATIBILITY
+  ═══════════════════════════════════════ -->
+  <kodiversions>
+    <kodiversion min="21.0" max="22.9">Omega/Piers</kodiversion>
+  </kodiversions>
+
+  <!-- ═══════════════════════════════════════
+       BUILD DEFINITION
+       Open Wizard downloads this zip, wipes
+       the user's Kodi userdata (optional),
+       and extracts the contents.
+  ═══════════════════════════════════════ -->
+  <builds>
+
+    <build>
+      <name>AZ2 ImpatientImpulse Edition – Full Build</name>
+      <version>1.0.0</version>
+      <description>Complete Netflix-style build: skin + TMDb Helper + Trakt + all widget sources pre-configured. Just add your TMDb API key and authorize Trakt.</description>
+
+      <!-- Direct link to the build zip on GitHub Releases -->
+      <url>https://github.com/impatientimpulse/az2ii-wizard/releases/latest/download/az2ii-build.zip</url>
+
+      <!-- MD5 hash of the zip (run: md5sum az2ii-build.zip) -->
+      <!-- Update this after every release -->
+      <md5>REPLACE_WITH_MD5_HASH_OF_YOUR_ZIP</md5>
+
+      <!-- Approximate unzipped size in MB -->
+      <info>~15 MB</info>
+
+      <!-- What this build contains -->
+      <includes>
+        <item>Skin: AZ2 ImpatientImpulse Edition (Netflix dark)</item>
+        <item>Plugin: TMDb Helper (pre-configured)</item>
+        <item>Plugin: Trakt (ready to authorize)</item>
+        <item>Widget sources: 8 pre-wired content rows</item>
+        <item>April 2026 curated metadata</item>
+      </includes>
+
+      <!-- Kodi version compatibility for this specific build -->
+      <kodiversion>21</kodiversion>
+
+      <!-- Thumbnail shown in Open Wizard build list -->
+      <thumb>https://impatientimpulse.github.io/az2ii-wizard/build_thumb.png</thumb>
+
+      <!-- Optional: message shown after install completes -->
+      <postinstall>
+        AZ2 ImpatientImpulse Edition installed! Next steps:
+        1. Add-ons → TMDb Helper → Settings → paste your TMDb API key
+        2. Add-ons → Trakt → Authorize → visit trakt.tv/activate
+        3. Restart Kodi to load all rows
+      </postinstall>
+
+    </build>
+
+  </builds>
+
+  <!-- ═══════════════════════════════════════
+       ADDON INSTALLER  (optional extras)
+       Users can install these individually
+       from the Open Wizard menu.
+  ═══════════════════════════════════════ -->
+  <addons>
+
+    <addon>
+      <name>The Movie Database Helper</name>
+      <id>plugin.video.themoviedb.helper</id>
+      <description>Required for all metadata, fanart, and widget rows. Get your free API key at themoviedb.org/settings/api</description>
+      <repo>https://mrgsi.github.io/gsource/</repo>
+    </addon>
+
+    <addon>
+      <name>Trakt</name>
+      <id>script.trakt</id>
+      <description>Required for Continue Watching and My Watchlist rows. Scrobbles your watch history automatically.</description>
+      <repo>https://mirrors.kodi.tv/addons/omega/</repo>
+    </addon>
+
+    <addon>
+      <name>Skin Shortcuts</name>
+      <id>script.skinshortcuts</id>
+      <description>Optional: lets you customize the navigation menu items.</description>
+      <repo>https://mirrors.kodi.tv/addons/omega/</repo>
+    </addon>
+
+  </addons>
+
+  <!-- ═══════════════════════════════════════
+       MAINTENANCE OPTIONS
+       Shown in Open Wizard's maintenance tab.
+  ═══════════════════════════════════════ -->
+  <maintenance>
+
+    <option>
+      <name>Clear TMDb Cache</name>
+      <description>Clears TMDb Helper artwork and metadata cache. Run if images look wrong.</description>
+      <action>RunScript(plugin.video.themoviedb.helper,clear_cache)</action>
+    </option>
+
+    <option>
+      <name>Force Trakt Sync</name>
+      <description>Forces a full Trakt sync. Run if Continue Watching row is out of date.</description>
+      <action>RunScript(script.trakt,action=sync)</action>
+    </option>
+
+    <option>
+      <name>Reload Skin</name>
+      <description>Reloads the AZ2 ImpatientImpulse skin without restarting Kodi.</description>
+      <action>ReloadSkin()</action>
+    </option>
+
+    <option>
+      <name>Clear Kodi Cache</name>
+      <description>Clears Kodi's thumbnail and package cache. Frees up storage, especially useful on Fire Stick.</description>
+      <action>CleanLibrary(video)</action>
+    </option>
+
+  </maintenance>
+
+  <!-- ═══════════════════════════════════════
+       CHANGELOG  (shown in Open Wizard)
+  ═══════════════════════════════════════ -->
+  <changelog>
+    v1.0.0 – May 2026
+    - Initial public release
+    - Netflix dark skin (AZ2 ImpatientImpulse Edition)
+    - 8 pre-configured content rows
+    - Trakt in-progress / watchlist integration
+    - TMDb Helper metadata + fanart
+    - April 2026 curated trending content
+    - Hero banner with clearlogo overlay
+    - Red progress bars on Continue Watching
+    - Top 10 rank number overlay row
+    - Video info dialog (More Info panel)
+  </changelog>
+
+</wizard>
