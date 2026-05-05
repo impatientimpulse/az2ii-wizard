@@ -51,7 +51,7 @@
 
       <!-- MD5 hash of the zip (run: md5sum az2ii-build.zip) -->
       <!-- Update this after every release -->
-      <md5>REPLACE_WITH_MD5_HASH_OF_YOUR_ZIP</md5>
+      <md5>A1B7EF04EF754A4ACD8FE2B8B5257889</md5>
 
       <!-- Approximate unzipped size in MB -->
       <info>~15 MB</info>
